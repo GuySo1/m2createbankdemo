@@ -1,0 +1,71 @@
+
+{
+    "resources": [
+        {
+            "resource-type": "vsam-config",
+            "resource-id": "vsam-1",
+            "properties": {
+                "secret-manager-arn": "This will be replaced by the script"
+            }
+        },
+        {
+            "resource-type": "cics-resource-definition",
+            "resource-id": "resource-definition-1", 
+            "properties": {
+                "file-location": "${s3-source}/RDEF",
+                "system-initialization-table": "BNKCICV"
+            }
+        },
+        {
+            "resource-type": "cics-transaction",
+            "resource-id": "transaction-1", 
+            "properties": {
+                "file-location": "${s3-source}/transaction"
+            }
+        },
+        {
+            "resource-type": "mf-listener",
+            "resource-id": "listener-1", 
+            "properties": {
+                "port": 6000,
+                "conversation-type": "tn3270"
+            }
+        },
+        {
+            "resource-type": "xa-resource",
+            "resource-id": "xa-resource-1",
+            "properties": {
+                "name": "XASQL",
+                "module": "${s3-source}/xa/ESPGSQLXA64.so",
+                "secret-manager-arn": "This will be replaced by the script"
+            }
+        },
+        {
+            "resource-type": "jes-initiator",
+            "resource-id": "jes-initiator-1",
+            "properties": {
+                "initiator-class": "A",
+                "description": "initiator...."
+            }
+        
+        },
+        {
+            "resource-type": "jcl-job",
+            "resource-id": "jcl-job-1",
+            "properties": {
+                "file-location": "${s3-source}/jcl"
+            }
+        }
+    ],
+    "source-locations": [
+        {
+            "source-id": "s3-source",
+            "source-type": "s3",
+            "properties": {
+                "s3-bucket": "m2-python",
+                "s3-key-prefix": "demo"
+            }
+        }
+    ]
+}    
+                

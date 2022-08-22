@@ -1,0 +1,8 @@
+{
+    "engine": "postgres",
+    "username": "postgres",
+    "password": "postgres",
+    "host": "This will be replaced in the script",    
+    "port": "5432",
+    "dbInstanceIdentifier": "This will be replaced in the script"
+  }

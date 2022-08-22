@@ -1,0 +1,50 @@
+
+{
+    "dataSets": [{
+            "dataSet": {
+                "location": "sql://ESPACDatabase/VSAM/MFI01V.MFIDEMO.BNKACC.DAT?folder=/DATA",
+                "name": "MFI01V.MFIDEMO.BNKACC"
+            },
+            "externalLocation": {
+                "s3Location": "s3://m2-python/catalog/data/MFI01V.MFIDEMO.BNKACC.DAT"
+            }
+        },
+        {
+            "dataSet": {
+                "location": "sql://ESPACDatabase/VSAM/MFI01V.MFIDEMO.BNKATYPE.DAT?folder=/DATA",
+                "name": "MFI01V.MFIDEMO.BNKATYPE"
+            },
+            "externalLocation": {
+                "s3Location": "s3://m2-python/catalog/data/MFI01V.MFIDEMO.BNKATYPE.DAT"
+            }
+        },
+        {
+            "dataSet": {
+                "location": "sql://ESPACDatabase/VSAM/MFI01V.MFIDEMO.BNKCUST.DAT?folder=/DATA",
+                "name": "MFI01V.MFIDEMO.BNKCUST"
+            },
+            "externalLocation": {
+                "s3Location": "s3://m2-python/catalog/data/MFI01V.MFIDEMO.BNKCUST.DAT"
+            }
+        },
+        {
+            "dataSet": {
+                "location": "sql://ESPACDatabase/VSAM/MFI01V.MFIDEMO.BNKHELP.DAT?folder=/DATA",
+                "name": "MFI01V.MFIDEMO.BNKHELP"
+            },
+            "externalLocation": {
+                "s3Location": "s3://m2-python/catalog/data/MFI01V.MFIDEMO.BNKHELP.DAT"
+            }
+        },
+        {
+            "dataSet": {
+                "location": "sql://ESPACDatabase/VSAM/MFI01V.MFIDEMO.BNKTXN.DAT?folder=/DATA",
+                "name": "MFI01V.MFIDEMO.BNKTXN"
+            },
+            "externalLocation": {
+                "s3Location": "s3://m2-python/catalog/data/MFI01V.MFIDEMO.BNKTXN.DAT"
+            }
+        }
+    ]
+}
+    
