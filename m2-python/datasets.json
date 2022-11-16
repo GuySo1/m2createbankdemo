@@ -2,8 +2,23 @@
 {
     "dataSets": [{
             "dataSet": {
-                "location": "sql://ESPACDatabase/VSAM/MFI01V.MFIDEMO.BNKACC.DAT?folder=/DATA",
-                "name": "MFI01V.MFIDEMO.BNKACC"
+                "storageType": "Database",
+                "datasetName": "MFI01V.MFIDEMO.BNKACC",
+                "relativePath": "DATA",
+                "datasetOrg": {
+                    "vsam": {
+                        "format": "KS",
+                        "encoding": "A",
+                        "primaryKey": {
+                            "length": 9,
+                            "offset": 5
+                        }
+                    }
+                },
+                "recordLength": {
+                    "min": 200,
+                    "max": 200
+                }
             },
             "externalLocation": {
                 "s3Location": "s3://m2-python/catalog/data/MFI01V.MFIDEMO.BNKACC.DAT"
@@ -11,8 +26,23 @@
         },
         {
             "dataSet": {
-                "location": "sql://ESPACDatabase/VSAM/MFI01V.MFIDEMO.BNKATYPE.DAT?folder=/DATA",
-                "name": "MFI01V.MFIDEMO.BNKATYPE"
+                "storageType": "Database",
+                "datasetName": "MFI01V.MFIDEMO.BNKATYPE",
+                "relativePath": "DATA",
+                "datasetOrg": {
+                    "vsam": {
+                        "format": "KS",
+                        "encoding": "A",
+                        "primaryKey": {
+                            "length": 1,
+                            "offset": 0
+                        }
+                    }
+                },
+                "recordLength": {
+                    "min": 100,
+                    "max": 100
+                }
             },
             "externalLocation": {
                 "s3Location": "s3://m2-python/catalog/data/MFI01V.MFIDEMO.BNKATYPE.DAT"
@@ -20,8 +50,23 @@
         },
         {
             "dataSet": {
-                "location": "sql://ESPACDatabase/VSAM/MFI01V.MFIDEMO.BNKCUST.DAT?folder=/DATA",
-                "name": "MFI01V.MFIDEMO.BNKCUST"
+                "storageType": "Database",
+                "datasetName": "MFI01V.MFIDEMO.BNKCUST",
+                "relativePath": "DATA",
+                "datasetOrg": {
+                    "vsam": {
+                        "format": "KS",
+                        "encoding": "A",
+                        "primaryKey": {
+                            "length": 5,
+                            "offset": 0
+                        }
+                    }
+                },
+                "recordLength": {
+                    "min": 250,
+                    "max": 250
+                }
             },
             "externalLocation": {
                 "s3Location": "s3://m2-python/catalog/data/MFI01V.MFIDEMO.BNKCUST.DAT"
@@ -29,8 +74,23 @@
         },
         {
             "dataSet": {
-                "location": "sql://ESPACDatabase/VSAM/MFI01V.MFIDEMO.BNKHELP.DAT?folder=/DATA",
-                "name": "MFI01V.MFIDEMO.BNKHELP"
+                "storageType": "Database",
+                "datasetName": "MFI01V.MFIDEMO.BNKHELP",
+                "relativePath": "DATA",
+                "datasetOrg": {
+                    "vsam": {
+                        "format": "KS",
+                        "encoding": "A",
+                        "primaryKey": {
+                            "length": 8,
+                            "offset": 0
+                        }
+                    }
+                },
+                "recordLength": {
+                    "min": 83,
+                    "max": 83
+                }
             },
             "externalLocation": {
                 "s3Location": "s3://m2-python/catalog/data/MFI01V.MFIDEMO.BNKHELP.DAT"
@@ -38,13 +98,28 @@
         },
         {
             "dataSet": {
-                "location": "sql://ESPACDatabase/VSAM/MFI01V.MFIDEMO.BNKTXN.DAT?folder=/DATA",
-                "name": "MFI01V.MFIDEMO.BNKTXN"
+                "storageType": "Database",
+                "datasetName": "MFI01V.MFIDEMO.BNKTXN",
+                "relativePath": "DATA",
+                "datasetOrg": {
+                    "vsam": {
+                        "format": "KS",
+                        "encoding": "A",
+                        "primaryKey": {
+                            "length": 16,
+                            "offset": 26
+                        }
+                    }
+                },
+                "recordLength": {
+                    "min": 400,
+                    "max": 400
+                }
             },
             "externalLocation": {
                 "s3Location": "s3://m2-python/catalog/data/MFI01V.MFIDEMO.BNKTXN.DAT"
             }
         }
+
     ]
 }
-    
