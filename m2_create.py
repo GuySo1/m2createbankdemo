@@ -44,7 +44,14 @@ def create_bankdemo_runtime():
         engineType='microfocus',    
         instanceType='M2.m5.large',
         name=envname,    
-        publiclyAccessible=True,    
+        publiclyAccessible=True,  
+        # Uncomment and set you subnet IDs below for Highly Avaiable cluster
+        # highAvailabilityConfig={
+        # 'desiredCapacity': 2
+        # },
+        # subnetIds=[
+        # '<<<Your 1st subnet ID goes here>>>', '<<<Your 2nd subnet ID goes here>>>'
+        # ],  
     )
 
     print("Starting DB creation")
