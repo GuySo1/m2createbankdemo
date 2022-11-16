@@ -45,7 +45,7 @@ def create_bankdemo_runtime():
         instanceType='M2.m5.large',
         name=envname,    
         publiclyAccessible=True,  
-        # Uncomment and set you subnet IDs below for Highly Avaiable cluster
+        # Uncomment and set your subnet IDs below for Highly Available cluster
         # highAvailabilityConfig={
         # 'desiredCapacity': 2
         # },
