@@ -38,22 +38,6 @@ def create_bankdemo_runtime():
     # Prepare deletion information
     delinfo = {"appname": appname, "dbname": dbname}
 
-    print("Starting environment creation")
-    res = m2.create_environment(    
-        description='Created in Python',
-        engineType='microfocus',    
-        instanceType='M2.m5.large',
-        name=envname,    
-        publiclyAccessible=True,  
-        # Uncomment and set your subnet IDs below for Highly Available cluster
-        # highAvailabilityConfig={
-        # 'desiredCapacity': 2
-        # },
-        # subnetIds=[
-        # '<<<Your 1st subnet ID goes here>>>', '<<<Your 2nd subnet ID goes here>>>'
-        # ],  
-    )
-
     print("Starting DB creation")
     res = rds.create_db_instance(    
         DBInstanceIdentifier=dbname,
@@ -66,9 +50,26 @@ def create_bankdemo_runtime():
         MasterUserPassword='postgres',    
         MultiAZ=False,    
         PubliclyAccessible=False,
-    # Need to make sure the parameter group familty matches the PostgreSQL engine version
+    # Need to make sure the parameter group family matches the PostgreSQL engine version
     #    DBParameterGroupName='m2-tutorial-pg-1'  
         DBParameterGroupName='<<<Your parametr group name goes here>>>'          
+    )
+
+    print("Starting environment creation")
+    res = m2.create_environment(    
+        description='Created in Python',
+        engineType='microfocus',
+        engineVersion='8.0.1',   
+        instanceType='M2.m5.large',
+        name=envname,    
+        publiclyAccessible=True,  
+        # Uncomment and set your subnet IDs below for Highly Available cluster
+        # highAvailabilityConfig={
+        # 'desiredCapacity': 2
+        # },
+        # subnetIds=[
+        # '<<<Your 1st subnet ID goes here>>>', '<<<Your 2nd subnet ID goes here>>>'
+        # ],  
     )
 
     envid = wait_for_env_creation(m2,envname)
@@ -77,7 +78,13 @@ def create_bankdemo_runtime():
 
     dbhost = wait_for_db_creation(rds,dbname)
     
-    print("DB " + dbname + " is available on address: " + dbhost)    
+    print("DB " + dbname + " is available on address: " + dbhost)  
+    print("Restarting DB")
+    rds.reboot_db_instance(
+        DBInstanceIdentifier=dbname        
+    )
+    dbhost = wait_for_db_creation(rds,dbname)
+    print("Restarting completed")
 
     secretstring["host"] = dbhost
     secretstring["dbInstanceIdentifier"] = dbname
@@ -179,6 +186,7 @@ def wait_for_db_creation(client, dbinstancename):
         response = client.describe_db_instances(
             DBInstanceIdentifier=dbinstancename            
         )
+        print(response["DBInstances"][0]["DBInstanceStatus"])
         if response["DBInstances"][0]["DBInstanceStatus"] == "available":
             return response["DBInstances"][0]["Endpoint"]["Address"]
         sleep(30)
