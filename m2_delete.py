@@ -4,11 +4,12 @@ import boto3.session
 import json
 from os import error
 
+# You need to be logged into your AWS account. (ie. running aws configure in the AWS CLI)
 
 def delete_bankdemo_runtime():
     # Create your own session
     my_session = boto3.session.Session(profile_name="<<<Your profile goes here>>>")
-        # If you are not using profiles, use the below to create the session. 
+    # If you are not using profiles, use the below to create the session. 
     # my_session = boto3.session.Session()
 
     # Now we can create low-level clients or resource clients from our custom session    
