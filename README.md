@@ -40,7 +40,7 @@ Get the ARN of the newly created key and paste it to m2_create.py instead of
 ### Create a custom PostgreSQL parameters group and change the max_prepared_transactions value
 - Create a custom parameter group by following the instructions in [Creating a DB parameter group](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithDBInstanceParamGroups.html#USER_WorkingWithParamGroups.Creating)
 - Change the max_prepared_transactions parameter value to 100 by following the instructions in [Modifying parameters in a DB parameter group](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithDBInstanceParamGroups.html#USER_WorkingWithParamGroups.Modifying).
-- Paste the name of the parameter group you created into m2_create.py instead of <<<"Your parametr group name goes here">>>
+- Paste the name of the parameter group you created into m2_create.py instead of <<<"Your parameter group name goes here">>>
 
 ## Usage
 - Run m2_create.py and monitor the output
