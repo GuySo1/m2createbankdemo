@@ -128,6 +128,9 @@ def create_bankdemo_runtime():
     print("Application " + appid + " created!")
     delinfo["appid"] = appid
 
+    delinfofilename = "delinfo" + timestamp + ".json"
+    write_json(delinfofilename, delinfo)
+
     print("Deploying application")
     response = m2.create_deployment(
         applicationId=appid,
@@ -161,9 +164,7 @@ def create_bankdemo_runtime():
     appaddress = wait_for_application_running(m2,appid)
 
     end = time.time()
-    delinfofilename = "delinfo" + timestamp + ".json"
-    write_json(delinfofilename, delinfo)
-    
+        
     print("Application is running and ready for you on:")
     print("Address: " + appaddress)
     print("Port 6000")
