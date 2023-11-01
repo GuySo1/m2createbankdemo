@@ -32,7 +32,8 @@ def create_bankdemo_runtime():
     kmskeyid = "<<<Your KMS ARN goes here>>>"
     
     secretstring = read_json("mfcreds.json")
-    appdef = read_json("appdef.json")    
+    # appdef = read_json("appdef.json") # earlier version of the application definition.
+    appdef = read_json("appdefv2.json")    
     secretpolicy = read_json("secretrespolicy.json")
         
     # Prepare deletion information
@@ -45,21 +46,21 @@ def create_bankdemo_runtime():
         DBInstanceClass='db.t3.small',
         Engine='postgres',
     # In case you need a specific PostgresQL engine version
-    #    EngineVersion='13.3',
+        EngineVersion='13.7',
         MasterUsername='postgres',
         MasterUserPassword='postgres',    
         MultiAZ=False,    
         PubliclyAccessible=False,
     # Need to make sure the parameter group family matches the PostgreSQL engine version
     #    DBParameterGroupName='m2-tutorial-pg-1'  
-        DBParameterGroupName='<<<Your parametr group name goes here>>>'          
+        DBParameterGroupName='<<<Your parameter group name goes here>>>'          
     )
 
     print("Starting environment creation")
     res = m2.create_environment(    
         description='Created in Python',
         engineType='microfocus',
-        engineVersion='8.0.1',   
+        engineVersion='8.0.9',   
         instanceType='M2.m5.large',
         name=envname,    
         publiclyAccessible=True,  
@@ -107,8 +108,10 @@ def create_bankdemo_runtime():
     
     print ("Applied policy to secret: " + secretarn)
 
-    appdef["resources"][0]["properties"]["secret-manager-arn"] = secretarn
-    appdef["resources"][4]["properties"]["secret-manager-arn"] = secretarn
+    # appdef["resources"][0]["properties"]["secret-manager-arn"] = secretarn # earlier version of the application definition.
+    # appdef["resources"][4]["properties"]["secret-manager-arn"] = secretarn # earlier version of the application definition.
+    appdef["definition"]["xa-resources"][0]["secret-manager-arn"] = secretarn
+    appdef["definition"]["dataset-location"]["db-locations"][0]["secret-manager-arn"] = secretarn
 
     print("Starting application creation")
     response = m2.create_application(
