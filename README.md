@@ -22,7 +22,17 @@ FYI - More info on the S3 bucket content:
 - Datasets import definition is based on [M2 runtime tutorial Import data sets section](https://docs.aws.amazon.com/m2/latest/userguide/tutorial-runtime.html#tutorial-runtime-mf-import)
 
 ### Create and configure an AWS Key Management Service key
-Use the instructions [here](https://docs.aws.amazon.com/m2/latest/userguide/tutorial-runtime.html#tutorial-runtime-mf-key)
+To create the key, follow the steps in [Creating keys](https://web.archive.org/web/20220611211116mp_/https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html) in the AWS Key Management Service Developer Guide. You will need to update the key policy to grant AWS Mainframe Modernization decrypt permissions. To add these permissions, add the following policy statements:
+```
+{
+    "Effect" : "Allow",
+    "Principal" : {
+        "Service" : "m2.amazonaws.com"
+        },
+        "Action" : "kms:Decrypt",
+        "Resource" : "*"
+}    
+```
 
 Get the ARN of the newly created key and paste it to m2_create.py instead of 
 <<<"Your KMS ARN goes here">>>
